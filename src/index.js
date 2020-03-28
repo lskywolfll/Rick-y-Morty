@@ -16,7 +16,7 @@ function CharacterCard(props) {
         {character.name}
       </div>
     </div>
-  );
+  )
 }
 
 class App extends React.Component {
@@ -28,7 +28,7 @@ class App extends React.Component {
       results: []
     },
     nextPage: 1
-  };
+  }
 
   componentDidMount() {
     this.fetchCharacters();
@@ -47,25 +47,32 @@ class App extends React.Component {
         loading: false,
         data: {
           info: data.info,
-          results: [].concat(this.state.data.results, data.results)
+          results: [].concat(
+            this.state.data.results,
+            data.results
+          )
         },
-        nextPage: this.state.nextPage + 1
+        nextPage: this.state.nextPage + 1,
       });
     } catch (error) {
-      this.setState({ loading: false, error: error });
+      this.setState({
+        loading: false,
+        error: error
+      });
     }
-  };
+  }
 
   render() {
+
     if (this.state.error) {
       return "Error!";
     }
 
     return (
+      
       <div className="container">
         <div className="App">
           <img className="Logo" src={logo} alt="Rick y Morty" />
-
           <ul className="row">
             {this.state.data.results.map(character => (
               <li className="col-6 col-md-3" key={character.id}>
@@ -81,7 +88,7 @@ class App extends React.Component {
           )}
         </div>
       </div>
-    );
+    )
   }
 }
 
